@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 
-class ProgressPage extends StatelessWidget {
+class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,6 +12,12 @@ class ProgressPage extends StatelessWidget {
         title: const Text(
           'Progress Page',
           style: TextStyle(color: Colors.amber, fontSize: 25),
+        ),
+      ),
+      body: Container(
+        child: SfCalendar(
+          view: CalendarView.month,
+          backgroundColor: Colors.grey[200],
         ),
       ),
     );

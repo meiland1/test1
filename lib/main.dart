@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'pages/progress_page.dart';
 import 'pages/habits_page.dart';
+//import 'pages/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,15 +27,15 @@ class MyApp extends StatelessWidget {
 }
 
 class NavigationScreen extends StatefulWidget {
-  NavigationScreen({required this.currentIndex});
+  NavigationScreen({super.key, required this.currentIndex});
   int currentIndex;
   @override
   State<NavigationScreen> createState() => _NavigationScreenState();
 }
 
 List<Widget> screens = [
-  HomePage(),
-  ProgressPage(),
+  const HomePage(),
+  CalendarPage(),
   HabitsPage(),
   //ProfilePage(),
 ];
@@ -60,7 +61,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today), label: "Progress"),
+              icon: Icon(Icons.calendar_today), label: "Calendar"),
           BottomNavigationBarItem(icon: Icon(Icons.timeline), label: "Habits"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],

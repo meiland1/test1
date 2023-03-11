@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'habit_tile.dart';
+//import 'habit_tile.dart';
 
 class HabitsPage extends StatelessWidget {
   @override
@@ -18,10 +18,11 @@ class HabitsPage extends StatelessWidget {
         ),
       ),
       body: ListView(
+        padding: const EdgeInsetsDirectional.all(8.0),
         children: [
-          HabitTile(child: 'Habit 1'),
-          HabitTile(child: 'Habit 2'),
-          HabitTile(child: 'Habit 3'),
+          //HabitTile(),
+          // HabitTile(),
+          // HabitTile(),
         ],
       ),
     );

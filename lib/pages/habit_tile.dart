@@ -1,21 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:test1/services.dart/lists.dart';
 
 class HabitTile extends StatelessWidget {
-  final String child;
+  final Habit habit;
+  final onHabitChanged;
+  final onDeleteHabit;
 
-  HabitTile({required this.child});
+  const HabitTile(
+      {Key? key, required this.habit, this.onHabitChanged, this.onDeleteHabit})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 200,
-        color: Colors.deepPurple[100],
-        child: Center(
-          child: Text(
-            child,
-            style: const TextStyle(fontSize: 25),
+    return Container(
+      height: 60,
+      margin: const EdgeInsets.only(
+        top: 8,
+        bottom: 8,
+      ),
+      child: ListTile(
+        onTap: () {
+          //print('Clicked on Habit Item');
+          onHabitChanged(habit);
+        },
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        tileColor: Colors.amber[300],
+        leading: Icon(
+          habit.isDone ? Icons.check_box : Icons.check_box_outline_blank,
+          color: Colors.grey[700],
+        ),
+        title: Text(
+          habit.habitText!,
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.black,
+            decoration: habit.isDone ? TextDecoration.lineThrough : null,
+          ),
+        ),
+        trailing: Container(
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+              color: Colors.red[400], borderRadius: BorderRadius.circular(5)),
+          child: IconButton(
+            color: Colors.white,
+            iconSize: 15,
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              //print('Clicked on Delete item');
+              onDeleteHabit(habit.id);
+            },
           ),
         ),
       ),
