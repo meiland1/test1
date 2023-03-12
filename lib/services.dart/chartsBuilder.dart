@@ -14,15 +14,15 @@
 //     );
 //   }
 
-//   LineChartData get sampleData1 => LineChartData(
-//         lineTouchData: lineTouchData1,
-//         gridData: gridData,
-//         titleData: titleData1,
-//         borderData: borderData,
-//         lineBarsData: lineBarsData1,
-//         minX: 0,
-//         maxX: 14,
-//         maxY: 100,
-//         minY: 0,
-//       );
-// }
+  LineChartData get sampleData1 => LineChartData(
+        lineTouchData: lineTouchData1,
+        gridData: gridData,
+        titleData: titleData1,
+        borderData: borderData,
+        lineBarsData: lineBarsData1,
+        minX: 0,
+        maxX: 14,
+        maxY: 100,
+        minY: 0,
+      );
+}
