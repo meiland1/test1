@@ -3,6 +3,7 @@ import 'pages/home_page.dart';
 import 'pages/calendar_page.dart';
 import 'pages/habits_page.dart';
 import 'pages/profile_page.dart';
+import 'services.dart/chartsBuilder.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +39,7 @@ List<Widget> screens = [
   const HomePage(),
   const CalendarPage(),
   HabitsPage(),
+  chartBuilder(),
   const ProfilePage(),
 ];
 
@@ -63,8 +65,9 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today), label: "Calendar"),
+          BottomNavigationBarItem(icon: Icon(Icons.timeline), label: "Streaks"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.timeline), label: "Progress"),
+              icon: Icon(Icons.pie_chart), label: "Progress"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),

@@ -2,7 +2,7 @@ class Habit {
   String? id;
   String? habitText;
   bool isDone;
-  int habitCount = 0;
+  double habitCount = 0;
 
   Habit({
     required this.id, // indexing for the list of habits using milliseconds
@@ -16,12 +16,12 @@ class Habit {
     return [
       ///Test list of habits
       ///
-      Habit(id: '01', habitText: 'Exercise'),
-      Habit(id: '02', habitText: 'Code'),
-      Habit(id: '03', habitText: 'Buy Groceries'),
-      Habit(id: '04', habitText: 'Meditate'),
-      Habit(id: '05', habitText: 'Read'),
-      Habit(id: '06', habitText: 'Laundry'),
+      Habit(id: '01', habitText: 'Exercise', habitCount: 5),
+      Habit(id: '02', habitText: 'Code', habitCount: 10),
+      Habit(id: '03', habitText: 'Buy Groceries', habitCount: 0),
+      Habit(id: '04', habitText: 'Meditate', habitCount: 20),
+      Habit(id: '05', habitText: 'Read', habitCount: 8),
+      Habit(id: '06', habitText: 'Laundry', habitCount: 0),
     ];
   }
 }

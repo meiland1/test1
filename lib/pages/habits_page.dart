@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test1/services.dart/lists.dart';
+import 'package:test1/services.dart/chartsBuilder.dart';
 
 class HabitsPage extends StatelessWidget {
   final habitsList = Habit.habitList();
@@ -9,7 +10,7 @@ class HabitsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Colors.amber[200],
       appBar: AppBar(
         backgroundColor: Colors.grey[900],
         centerTitle: true,
@@ -35,13 +36,13 @@ class HabitsPage extends StatelessWidget {
                     children: [
                       const Text(
                         'Habit Streaks: \n',
-                        style: TextStyle(fontSize: 32, color: Colors.amber),
+                        style: TextStyle(fontSize: 32, color: Colors.black),
                       ),
                       for (Habit habit in habitsList)
                         Text(
                           '${habit.habitText}: ${habit.habitCount}\n',
                           style: const TextStyle(
-                              fontSize: 24, color: Colors.amber),
+                              fontSize: 24, color: Colors.black),
                         ),
                     ],
                   ),
