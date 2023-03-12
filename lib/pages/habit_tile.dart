@@ -13,6 +13,7 @@ class HabitTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      //Creates the box for the habit
       height: 60,
       margin: const EdgeInsets.only(
         top: 8,
@@ -20,7 +21,7 @@ class HabitTile extends StatelessWidget {
       ),
       child: ListTile(
         onTap: () {
-          //print('Clicked on Habit Item');
+          //  changes the value of isDone from false to true or vice versa
           onHabitChanged(habit);
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -30,7 +31,8 @@ class HabitTile extends StatelessWidget {
           color: Colors.grey[700],
         ),
         title: Text(
-          habit.habitText!,
+          //prints the habit text to the box followed by its streak
+          '${habit.habitText!}: ${habit.habitCount}',
           style: TextStyle(
             fontSize: 18,
             color: Colors.black,

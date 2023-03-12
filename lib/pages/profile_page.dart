@@ -1,36 +1,39 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class ProfilePage extends StatefulWidget {
-//   const ProfilePage({Key? key}) : super(key: key);
+class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
 
-//   @override
-//   State<ProfilePage> createState() => _ProfilePage();
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[800],
+      appBar: _buildHeader(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: const [
+            CircleAvatar(
+              radius: 56,
+              backgroundColor: Colors.amber,
+            )
+          ],
+        ),
+      ),
+    );
+  }
 
-// class _ProfilePage extends State<ProfilePage> {
-//   bool ischecked = false;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Center(
-//       child: ListView(
-//         padding: const EdgeInsets.all(8.0),
-//         children: <Widget>[
-//           const SizedBox(
-//             height: 50,
-//           ),
-//           CheckboxListTile(
-//             title: const TextField(),
-//             tileColor: Colors.amber[300],
-//             value: ischecked,
-//             onChanged: (bool? value) {
-//               setState(() {
-//                 ischecked = value!;
-//               });
-//             },
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+  AppBar _buildHeader() {
+    return AppBar(
+      backgroundColor: Colors.grey[900],
+      centerTitle: true,
+      title: const Text(
+        'Profile Page',
+        style: TextStyle(
+          color: Colors.amber,
+          fontSize: 25,
+        ),
+      ),
+    );
+  }
+}

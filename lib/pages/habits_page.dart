@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-//import 'habit_tile.dart';
+import 'package:test1/services.dart/lists.dart';
 
 class HabitsPage extends StatelessWidget {
+  final habitsList = Habit.habitList();
+
+  HabitsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,19 +14,41 @@ class HabitsPage extends StatelessWidget {
         backgroundColor: Colors.grey[900],
         centerTitle: true,
         title: const Text(
-          'Habit List',
+          'Progress',
           style: TextStyle(
             color: Colors.amber,
             fontSize: 25,
           ),
         ),
       ),
-      body: ListView(
-        padding: const EdgeInsetsDirectional.all(8.0),
+      body: Stack(
         children: [
-          //HabitTile(),
-          // HabitTile(),
-          // HabitTile(),
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    children: [
+                      const Text(
+                        'Habit Streaks: \n',
+                        style: TextStyle(fontSize: 32, color: Colors.amber),
+                      ),
+                      for (Habit habit in habitsList)
+                        Text(
+                          '${habit.habitText}: ${habit.habitCount}\n',
+                          style: const TextStyle(
+                              fontSize: 24, color: Colors.amber),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

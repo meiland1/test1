@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
-import 'pages/progress_page.dart';
+import 'pages/calendar_page.dart';
 import 'pages/habits_page.dart';
-//import 'pages/profile_page.dart';
+import 'pages/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class NavigationScreen extends StatefulWidget {
   NavigationScreen({super.key, required this.currentIndex});
   int currentIndex;
@@ -35,9 +36,9 @@ class NavigationScreen extends StatefulWidget {
 
 List<Widget> screens = [
   const HomePage(),
-  CalendarPage(),
+  const CalendarPage(),
   HabitsPage(),
-  //ProfilePage(),
+  const ProfilePage(),
 ];
 
 class _NavigationScreenState extends State<NavigationScreen> {
@@ -62,7 +63,8 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today), label: "Calendar"),
-          BottomNavigationBarItem(icon: Icon(Icons.timeline), label: "Habits"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.timeline), label: "Progress"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
         ],
       ),

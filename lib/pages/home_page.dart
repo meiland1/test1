@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 20,
-              vertical: 15,
+              vertical: 10,
             ),
             child: Column(
               children: [
@@ -48,13 +48,13 @@ class _HomePageState extends State<HomePage> {
               Expanded(
                 child: Container(
                   margin: const EdgeInsets.only(
-                    bottom: 20,
+                    bottom: 10,
                     right: 20,
                     left: 20,
                   ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 20,
-                    vertical: 5,
+                    vertical: 10,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.amber[100],
@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
               ),
               Container(
                 margin: const EdgeInsets.only(
-                  bottom: 20,
+                  bottom: 10,
                   right: 20,
                 ),
                 child: ElevatedButton(
@@ -108,6 +108,13 @@ class _HomePageState extends State<HomePage> {
   void _handleHabitChange(Habit habit) {
     setState(() {
       habit.isDone = !habit.isDone;
+      if (habit.isDone == true) {
+        habit.habitCount++;
+        //print('count incremented');
+      } else {
+        habit.habitCount--;
+        //print('count decremented');
+      }
     });
   }
 
@@ -129,12 +136,12 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _buildHeader() {
     return AppBar(
-      backgroundColor: Colors.amber[400],
+      backgroundColor: Colors.grey[900],
       centerTitle: true,
       title: const Text(
         'Habit Tracker',
         style: TextStyle(
-          color: Colors.black54,
+          color: Colors.amber,
           fontSize: 25,
         ),
       ),
