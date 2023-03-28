@@ -32,7 +32,9 @@ dependencies:
     sdk: flutter
 
   table_calendar: ^2.1.0
-
+  sqflite: ^2.0.6
+  path: ^1.8.2
+  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -40,6 +42,7 @@ dependencies:
   syncfusion_flutter_calendar: ^20.4.51
   fl_chart: ^0.61.0
   syncfusion_flutter_charts: ^20.4.53
+  path_provider: ^2.0.14
 
 dev_dependencies:
   flutter_test:

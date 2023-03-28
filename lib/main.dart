@@ -4,8 +4,14 @@ import 'pages/calendar_page.dart';
 import 'pages/habits_page.dart';
 import 'pages/profile_page.dart';
 import 'services.dart/chartsBuilder.dart';
+import 'pages/login_page.dart';
+import 'package:test1/database_helper.dart';
 
-void main() {
+final dbHelper = DatabaseHelper();
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dbHelper.init();
   runApp(const MyApp());
 }
 
@@ -41,6 +47,7 @@ List<Widget> screens = [
   HabitsPage(),
   chartBuilder(),
   const ProfilePage(),
+  LoginPage(),
 ];
 
 class _NavigationScreenState extends State<NavigationScreen> {
@@ -69,6 +76,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           BottomNavigationBarItem(
               icon: Icon(Icons.pie_chart), label: "Progress"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
         ],
       ),
     );
