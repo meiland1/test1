@@ -87,6 +87,8 @@ class _LoginPageState extends State<LoginPage> {
       DatabaseHelper.columnName: _userNameController.text,
       DatabaseHelper.columnPwd: _passwordController.text,
     };
+    _userNameController.clear();
+    _passwordController.clear();
     final id = await dbHelper.insert(row);
     debugPrint('inserted row id: $id');
   }
