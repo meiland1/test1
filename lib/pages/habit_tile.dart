@@ -14,7 +14,7 @@ class HabitTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       //Creates the box for the habit
-      height: 150,
+      height: 60,
       margin: const EdgeInsets.only(
         top: 8,
         bottom: 8,
