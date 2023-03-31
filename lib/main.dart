@@ -1,26 +1,80 @@
 import 'package:flutter/material.dart';
-import 'pages/profile_page.dart';
 import 'pages/home_page.dart';
-import 'pages/intake_page.dart';
+import 'pages/calendar_page.dart';
+import 'pages/habits_page.dart';
+import 'pages/profile_page.dart';
+
+import 'services.dart/chartsBuilder.dart';
+import 'pages/login_page.dart';
 
 void main() {
-  runApp(const ChiroApp());
+  runApp(const MyApp());
 }
 
-class ChiroApp extends StatelessWidget {
-  const ChiroApp({Key? key}) : super(key: key);
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'HABIT TRACKER',
       debugShowCheckedModeBanner: false,
-      title: "Chiro App",
-      initialRoute: '/',
-      routes: {
-        '/': (context) => HomePage(),
-        '/profile': (context) => const ProfilePage(),
-        '/intake': (context) => const IntakePage(),
-      },
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+      home: NavigationScreen(
+        currentIndex: 0,
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class NavigationScreen extends StatefulWidget {
+  NavigationScreen({super.key, required this.currentIndex});
+  int currentIndex;
+  @override
+  State<NavigationScreen> createState() => _NavigationScreenState();
+}
+
+List<Widget> screens = [
+  const HomePage(),
+  const CalendarPage(),
+  HabitsPage(),
+  chartBuilder(),
+  const ProfilePage(),
+  LoginPage(),
+];
+
+class _NavigationScreenState extends State<NavigationScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: IndexedStack(
+        index: widget.currentIndex,
+        children: screens,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.grey,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.amber,
+        currentIndex: widget.currentIndex,
+        onTap: (index) {
+          setState(() {
+            widget.currentIndex = index;
+          });
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today), label: "Calendar"),
+          BottomNavigationBarItem(icon: Icon(Icons.timeline), label: "Streaks"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.pie_chart), label: "Progress"),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          BottomNavigationBarItem(icon: Icon(Icons.login), label: "Login"),
+        ],
+      ),
     );
   }
 }

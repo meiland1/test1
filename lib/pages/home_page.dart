@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'profile_page.dart';
-import 'intake_page.dart';
+import 'package:test1/database_helper.dart';
 import 'package:test1/services.dart/lists.dart';
+import 'habit_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,9 +17,92 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[800],
+      backgroundColor: Colors.amber[100],
       appBar: _buildHeader(),
-      drawer: NavDrawer(),
+      body: Stack(
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: Column(
+              children: [
+                Expanded(
+                  child: ListView(
+                    children: [
+                      for (Habit habit in habitsList)
+                        HabitTile(
+                          habit: habit,
+                          onHabitChanged: _handleHabitChange,
+                          onDeleteHabit: _deleteHabit,
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Row(children: [
+              Expanded(
+                child: Container(
+                  margin: const EdgeInsets.only(
+                    bottom: 10,
+                    right: 20,
+                    left: 20,
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                    vertical: 10,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.amber[100],
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 0.0),
+                        blurRadius: 10.0,
+                        spreadRadius: 0.0,
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextField(
+                      controller: _habitController,
+                      decoration: const InputDecoration(
+                          hintText: 'Add A New Habit To Track!',
+                          border: InputBorder.none)),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  bottom: 10,
+                  right: 20,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _updateHabitList(_habitController.text);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple[300],
+                    minimumSize: const Size(60, 60),
+                    elevation: 10,
+                  ),
+                  child: const Text(
+                    '+',
+                    style: TextStyle(
+                      fontSize: 40,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              )
+            ]),
+          ),
+        ],
+      ),
     );
   }
 
@@ -57,65 +140,11 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.grey[900],
       centerTitle: true,
       title: const Text(
-        'Chiro App',
+        'Habit Tracker',
         style: TextStyle(
-          color: Colors.greenAccent,
+          color: Colors.amber,
           fontSize: 25,
         ),
-      ),
-    );
-  }
-}
-
-class NavDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      backgroundColor: Colors.grey[800],
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.black12,
-            ),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1657641898365-48ae7d64e676?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2680&q=80'),
-            ),
-          ),
-          ListTile(
-            title: const Text(
-              'Welcome',
-              style: TextStyle(color: Colors.greenAccent),
-            ),
-            onTap: () => {},
-          ),
-          ListTile(
-            leading: const Icon(Icons.input),
-            title: const Text(
-              'Profile',
-              style: TextStyle(color: Colors.greenAccent),
-            ),
-            onTap: () => {
-              Navigator.of(context).pop(context),
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const ProfilePage())),
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.input),
-            title: const Text(
-              'Intake',
-              style: TextStyle(color: Colors.greenAccent),
-            ),
-            onTap: () => {
-              Navigator.of(context).pop(context),
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const IntakePage())),
-            },
-          ),
-        ],
       ),
     );
   }
