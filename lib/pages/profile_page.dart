@@ -8,17 +8,16 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: _buildHeader(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            CircleAvatar(
-              radius: 56,
-              backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1657641898365-48ae7d64e676?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2680&q=80'),
-            )
-          ],
+      body: Container(
+        child: const ListTile(
+          title: Text(
+            'Name:',
+            style: TextStyle(color: Colors.greenAccent, fontSize: 20),
+          ),
+          subtitle: Text(
+            'Email:',
+            style: TextStyle(color: Colors.greenAccent, fontSize: 20),
+          ),
         ),
       ),
     );
@@ -31,7 +30,7 @@ class ProfilePage extends StatelessWidget {
       title: const Text(
         'Profile Page',
         style: TextStyle(
-          color: Colors.amber,
+          color: Colors.greenAccent,
           fontSize: 25,
         ),
       ),
